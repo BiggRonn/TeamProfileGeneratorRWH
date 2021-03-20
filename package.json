@@ -1,0 +1,32 @@
+{
+  "name": "TeamProfileGeneratorRWH",
+  "version": "1.0.0",
+  "description": "Your task is to build a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. Testing is key to making code maintainable, so you’ll also write a unit test for every part of your code and ensure that it passes each test.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "asynckit": "^0.4.0",
+    "atob": "^2.1.2",
+    "aws-sign2": "^0.7.0",
+    "aws4": "^1.11.0",
+    "babel-preset-current-node-syntax": "^1.0.1",
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BiggRonn/TeamProfileGeneratorRWH.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BiggRonn/TeamProfileGeneratorRWH/issues"
+  },
+  "homepage": "https://github.com/BiggRonn/TeamProfileGeneratorRWH#readme"
+}
