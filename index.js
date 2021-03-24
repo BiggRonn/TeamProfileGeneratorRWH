@@ -2,9 +2,9 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 
 const Employee = require("./lib/Employee");
-const Engineer = require("./lib/Employee");
-const Intern = require("./lib/Employee");
-const Manager = require("./lib/Employee");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
 
 const gen = require("./util/generators");
 
@@ -38,11 +38,10 @@ function addManager() {
         }
 
     ]).then(answers => {
+       
         const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.oNum);
-        
         myFile += gen.generateManager(manager);
-        console.log(manager);
-        addMore();
+         addMore();
 
     }).catch(err => console.log(err));
 }
