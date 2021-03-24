@@ -9,10 +9,11 @@ const team = require("./teamQ");
 const gen = require("./util/generators");
 
 
-const myTeam = [];
+const myFile = gen.generateTop();
 
-//will prompt user for data and return a manager object initialized with the given values
-function addManager(){
+//will prompt user for data and generate the html and add it to our file string.
+
+function addManager() {
     inquirer.prompt([
         {
             type: "input",
@@ -34,16 +35,16 @@ function addManager(){
             name: "oNum",
             message: "What is the manager's office number?"
         }
-        
+
     ]).then(answers => {
         const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.oNum);
         console.log(manager);
-        generateManager(manager.name, manager.id, manager.email, manager.officeNumber);
-        
+        myFile += generateManager(manager.name, manager.id, manager.email, manager.officeNumber);
+
     })
 }
 
-function addEngineer(){
+function addEngineer() {
     inquirer.prompt([
         {
             type: "input",
@@ -65,14 +66,15 @@ function addEngineer(){
             name: "github",
             message: "What is the engineer's GitHub username?"
         }
-        
+
     ]).then(answers => {
-        const engineer = new Engineer(answers.mName, answers.mId, answers.mEmail, answers.github)
-        generateEngineer(engineer.name, engineer.id, engineer.email, engineer.github);;
+        const engineer = new Engineer(answers.mName, answers.mId, answers.mEmail, answers.github);
+        myFile += generateEngineer(engineer.name, engineer.id, engineer.email, engineer.github);
+        addMore();
     })
 }
 
-function addIntern(){
+function addIntern() {
     inquirer.prompt([
         {
             type: "input",
@@ -94,11 +96,36 @@ function addIntern(){
             name: "school",
             message: "What school is the intern attending?"
         }
-        
+
     ]).then(answers => {
-        const intern = new Intern(answers.mName, answers.mId, answers.mEmail, answers.school)
-        generateIntern(intern.name, intern.id, intern.email, intern.school);;
+        const intern = new Intern(answers.mName, answers.mId, answers.mEmail, answers.school);
+        myFile += generateIntern(intern.name, intern.id, intern.email, intern.school);
+        addMore();
+
     })
+}
+
+function addMore() {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "moreTeam",
+            message: "Would you like to add more members to your team?",
+            choices: ["Engineer", "Intern", "Exit"]
+
+        }.then(data => {
+            switch (data.) {
+                case "Engineer": addEngineer();
+                    break;
+                case "Intern": addIntern();
+                    break;
+                case "Exit": gen.generateBottom();
+                    break;
+
+            }
+        })
+    ])
+
 }
 
 
@@ -111,13 +138,13 @@ function addIntern(){
 
 
 // async function init() {
-    
+
 //     const man = await addManager();
 //     myTeam.push(man);
 //     console.log(myTeam);
 
 //     let addMore = true;
-    
+
 //     while(addMore === true) {
 //         await inquirer.prompt([
 //             {
