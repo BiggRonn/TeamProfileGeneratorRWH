@@ -114,7 +114,7 @@ function addMore() {
             choices: ["Engineer", "Intern", "Exit"]
 
         }.then(data => {
-            switch (data.) {
+            switch (data) {
                 case "Engineer": addEngineer();
                     break;
                 case "Intern": addIntern();
@@ -128,7 +128,7 @@ function addMore() {
 
 }
 
-
+addManager();
 
 
 
