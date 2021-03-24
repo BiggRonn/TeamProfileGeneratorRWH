@@ -63,8 +63,7 @@ function generateIntern({name, id, email, school }){
 }
 
 function generateTop(){
-    return `
-    <!DOCTYPE html>
+    return `<!DOCTYPE html>
 <html lang="en">
 
 <head>

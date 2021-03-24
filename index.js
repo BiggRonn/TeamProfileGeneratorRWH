@@ -5,11 +5,12 @@ const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Employee");
 const Intern = require("./lib/Employee");
 const Manager = require("./lib/Employee");
-const team = require("./teamQ");
+
 const gen = require("./util/generators");
 
 
-const myFile = gen.generateTop();
+let myFile = "";
+myFile += gen.generateTop();
 
 //will prompt user for data and generate the html and add it to our file string.
 
@@ -39,9 +40,10 @@ function addManager() {
     ]).then(answers => {
         const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.oNum);
         console.log(manager);
-        myFile += generateManager(manager.name, manager.id, manager.email, manager.officeNumber);
+        myFile += gen.generateManager(manager);
+        addMore();
 
-    })
+    }).catch(err => console.log(err));
 }
 
 function addEngineer() {
@@ -68,10 +70,10 @@ function addEngineer() {
         }
 
     ]).then(answers => {
-        const engineer = new Engineer(answers.mName, answers.mId, answers.mEmail, answers.github);
-        myFile += generateEngineer(engineer.name, engineer.id, engineer.email, engineer.github);
+        const engineer = new Engineer(answers.eName, answers.eId, answers.eEmail, answers.github);
+        myFile += gen.generateEngineer(engineer);
         addMore();
-    })
+    }).catch(err => console.log(err));
 }
 
 function addIntern() {
@@ -98,11 +100,11 @@ function addIntern() {
         }
 
     ]).then(answers => {
-        const intern = new Intern(answers.mName, answers.mId, answers.mEmail, answers.school);
-        myFile += generateIntern(intern.name, intern.id, intern.email, intern.school);
+        const intern = new Intern(answers.iName, answers.iId, answers.iEmail, answers.school);
+        myFile += gen.generateIntern(intern);
         addMore();
 
-    })
+    }).catch(err => console.log(err));
 }
 
 function addMore() {
@@ -113,18 +115,28 @@ function addMore() {
             message: "Would you like to add more members to your team?",
             choices: ["Engineer", "Intern", "Exit"]
 
-        }.then(data => {
-            switch (data) {
-                case "Engineer": addEngineer();
-                    break;
-                case "Intern": addIntern();
-                    break;
-                case "Exit": gen.generateBottom();
-                    break;
-
-            }
-        })
+        }
     ])
+    .then(data => {
+        
+        switch (data.moreTeam) {
+            case "Engineer": addEngineer();
+                break;
+            case "Intern": addIntern();
+                break;
+            case "Exit": finalWrite();
+                break;
+
+        }
+    })
+
+}
+
+
+function finalWrite(){
+    myFile += gen.generateBottom();
+
+    fs.writeFile("index.html", myFile, (err) => console.log(err))
 
 }
 
@@ -132,46 +144,3 @@ addManager();
 
 
 
-
-
-
-
-
-// async function init() {
-
-//     const man = await addManager();
-//     myTeam.push(man);
-//     console.log(myTeam);
-
-//     let addMore = true;
-
-//     while(addMore === true) {
-//         await inquirer.prompt([
-//             {
-//                 type: "list",
-//                 name: "moreTeam",
-//                 message: "Would you like to add more members to your team?",
-//                 choices: ["Engineer", "Intern", "Exit"]
-
-//             }.then(data => {
-//                 switch (data) {
-//                     case "Engineer": myTeam.push(addEngineer());
-//                         break;
-//                     case "Intern": myTeam.push(addIntern());
-//                         break;
-//                     case "Exit": addMore = false;
-//                         break;
-
-//                 }
-//             })
-//         ])
-
-//     } 
-
-//     //when done generate html
-// console.log("Bostomatwe");
-
-// }
-
-
-// init()

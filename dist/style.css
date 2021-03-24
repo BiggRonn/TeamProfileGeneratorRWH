@@ -6,6 +6,13 @@ ul{
 li{
     padding: 6px;
 }
+footer{
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    position:absolute;
+    bottom: 0;
+}
 
 #cHead{
     padding-top: 4px;
