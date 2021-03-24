@@ -40,7 +40,7 @@ describe("Employee", () => {
     test("Can get school via getSchool() method", () => {
         const school = "Harvard";
         const e = new Intern("Nick", 77, "tbeauchamp@gmail.com", school);
-        expect(e.getSchol()).toBe(school);
+        expect(e.getSchool()).toBe(school);
       });
     test("Can get role via getRole() method", () => {
       const e = new Intern("Nick", 77, "tbeauchamp@gmail.com", "Harvard");

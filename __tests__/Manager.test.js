@@ -7,12 +7,12 @@ describe("Manager", () => {
     });
     test("Can set name attribute with constructor", () => {
       const name = "Clark";
-      const e = new Manager(name);
+      const e = new Manager(name, 33, "tbeauchamp@2u.com", 1221);
       expect(e.name).toBe(name);
     });
     test("Can set id attribute with constructor", () => {
       const id = 77;
-      const e = new Manager("Nick", id);
+      const e = new Manager("Nick", id, "tbeauchamp@2u.com", 1221);
       expect(e.id).toBe(id);
     });
     test("Can set email attribute with constructor", () => {
@@ -21,9 +21,9 @@ describe("Manager", () => {
       expect(e.email).toBe(email);
     });
     test("Can set office number attribute with constructor", () => {
-        const officeNumber = 11214;
-        const e = new Manager("Nick", 77, email, officeNumber);
-        expect(e.oNum).toBe(officeNumber);
+        const onum = 11214;
+        const e = new Manager("Nick", 77, "tbeauchamp@2u.com", onum);
+        expect(e.officeNumber).toBe(onum);
       });
 
   });
