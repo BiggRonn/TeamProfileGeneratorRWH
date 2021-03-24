@@ -39,7 +39,7 @@ function addManager() {
 
     ]).then(answers => {
         const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.oNum);
-        console.log(manager);
+        
         myFile += gen.generateManager(manager);
         addMore();
 
