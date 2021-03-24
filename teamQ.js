@@ -87,3 +87,9 @@ function addIntern(){
         return intern;
     })
 }
+
+module.exports = {
+    addManager,
+    addEngineer,
+    addIntern,
+}

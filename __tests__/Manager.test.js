@@ -1,17 +1,51 @@
-const { test, expect } = require("@jest/globals");
-const Employee = require("../lib/Employee");
+const Manager = require("../lib/Manager");
+describe("Manager", () => {
+  describe("Initialization", () => {
+    test("Can initialize an employee object", () => {
+      const e = new Manager();
+      expect(typeof e).toBe("object");
+    });
+    test("Can set name attribute with constructor", () => {
+      const name = "Clark";
+      const e = new Manager(name);
+      expect(e.name).toBe(name);
+    });
+    test("Can set id attribute with constructor", () => {
+      const id = 77;
+      const e = new Manager("Nick", id);
+      expect(e.id).toBe(id);
+    });
+    test("Can set email attribute with constructor", () => {
+      const email = "tbeauchamp@2u.com";
+      const e = new Manager("Nick", 77, email, 1221);
+      expect(e.email).toBe(email);
+    });
+    test("Can set office number attribute with constructor", () => {
+        const officeNumber = 11214;
+        const e = new Manager("Nick", 77, email, officeNumber);
+        expect(e.oNum).toBe(officeNumber);
+      });
 
-test("Can return Employee name", () => {
-    const employee = new Employee("Dan", 23352, "big@maily.com");
-    expect(employee.getName()).toBe("Dan");
-})
-
-test("Can return Employee ID", () => {
-    const employee = new Employee("Dan", 23352, "big@maily.com");
-    expect(employee.getId()).toBe(23352);
-})
-
-test("Can return Employee Email", () => {
-    const employee = new Employee("Dan", 23352, "big@maily.com");
-    expect(employee.getEmail()).toBe("big@maily.com");
-})
+  });
+  describe("getters", () => {
+    test("Can get name via getName() method", () => {
+      const name = "Nick";
+      const e = new Manager(name, 77, "tbeauchamp@gmail.com");
+      expect(e.getName()).toBe(name);
+    });
+    test("Can get id via getId() method", () => {
+      const id = 77;
+      const e = new Manager("Nick", id, "tbeauchamp@gmail.com");
+      expect(e.getId()).toBe(id);
+    });
+    test("Can get email via getEmail() method", () => {
+      const email = "tbeauchamp@gmail.com";
+      const e = new Manager("Nick", 77, email);
+      expect(e.getEmail()).toBe(email);
+    });
+    test("Can get role via getRole() method", () => {
+      const e = new Manager("Nick", 77, "tbeauchamp@gmail.com");
+      expect(e.getRole()).toBe("Manager");
+    });
+  });
+});
