@@ -41,6 +41,7 @@ function addManager() {
         const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.oNum);
         
         myFile += gen.generateManager(manager);
+        console.log(manager);
         addMore();
 
     }).catch(err => console.log(err));
