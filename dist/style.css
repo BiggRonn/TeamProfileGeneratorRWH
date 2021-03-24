@@ -1,4 +1,31 @@
 ul{
     list-style: none;
-    text-align: left;
+    margin: 0px;
+    padding: 0px;
+}
+li{
+    padding: 6px;
+}
+
+#cHead{
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+}
+
+.card{
+    display: flex;
+    justify-content: flex-start;
+    width: 300px;
+
+
+}
+
+#maincontainer{
+    display: flex;
+    justify-content: center;
+}
+
+.page-header{
+    background-color: rgb(0, 56, 56);
 }

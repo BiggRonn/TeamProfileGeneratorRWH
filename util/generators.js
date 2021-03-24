@@ -10,7 +10,7 @@ function generateManager({name, id, email, officeNumber }){
                 </div>
                 <ul id= "cardlist">
                     <li class = "bg-info">ID: ${id}</li>
-                    <li class= "bg-info">Email ${email}: </li>
+                    <li class= "bg-info"><a href= "mailto:${email}">Email: ${email}: </a></li>
                     <li class = "bg-info">Office #: ${officeNumber}</li>
                     
                 </ul>
@@ -31,7 +31,7 @@ function generateEngineer({name, id, email, github }){
                 </div>
                 <ul id= "cardlist">
                     <li class = "bg-info">ID: ${id}</li>
-                    <li class= "bg-info">Email ${email}: </li>
+                    <li class= "bg-info"><a href= "mailto:${email}">Email: ${email}: </a></li>
                     <li class = "bg-info"><a href= "https://github.com/${github}" >GitHub: ${github}</a></li>
                     
                 </ul>
@@ -52,7 +52,7 @@ function generateIntern({name, id, email, school }){
                 </div>
                 <ul id= "cardlist">
                     <li class = "bg-info">ID: ${id}</li>
-                    <li class= "bg-info"><a href= "mailto:${email}">Email: ${email}: <a/></li>
+                    <li class= "bg-info"><a href= "mailto:${email}">Email: ${email}: </a></li>
                     <li class = "bg-info">School: ${school}</li>
                     
                 </ul>

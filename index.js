@@ -5,7 +5,8 @@ const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Employee");
 const Intern = require("./lib/Employee");
 const Manager = require("./lib/Employee");
-const team = require("./teamQ")
+const team = require("./teamQ");
+const gen = require("./util/generators");
 
 
 const myTeam = [];
@@ -35,8 +36,10 @@ function addManager(){
         }
         
     ]).then(answers => {
-        const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.oNum)
-        return manager;
+        const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.oNum);
+        console.log(manager);
+        generateManager(manager.name, manager.id, manager.email, manager.officeNumber);
+        
     })
 }
 
@@ -65,7 +68,7 @@ function addEngineer(){
         
     ]).then(answers => {
         const engineer = new Engineer(answers.mName, answers.mId, answers.mEmail, answers.github)
-        return engineer;
+        generateEngineer(engineer.name, engineer.id, engineer.email, engineer.github);;
     })
 }
 
@@ -94,7 +97,7 @@ function addIntern(){
         
     ]).then(answers => {
         const intern = new Intern(answers.mName, answers.mId, answers.mEmail, answers.school)
-        return intern;
+        generateIntern(intern.name, intern.id, intern.email, intern.school);;
     })
 }
 
@@ -104,39 +107,44 @@ function addIntern(){
 
 
 
-function init() {
+
+
+
+// async function init() {
     
-    const man = addManager();
-    myTeam.push(man);
+//     const man = await addManager();
+//     myTeam.push(man);
+//     console.log(myTeam);
+
+//     let addMore = true;
     
-    do {
-        let addMore = true;
-        inquirer.prompt([
-            {
-                type: "list",
-                name: "moreTeam",
-                message: "Would you like to add more members to your team?",
-                choices: ["Engineer", "Intern", "Exit"]
+//     while(addMore === true) {
+//         await inquirer.prompt([
+//             {
+//                 type: "list",
+//                 name: "moreTeam",
+//                 message: "Would you like to add more members to your team?",
+//                 choices: ["Engineer", "Intern", "Exit"]
 
-            }.then(data => {
-                switch (data) {
-                    case "Engineer": myTeam.push(addEngineer());
-                        break;
-                    case "Intern": myTeam.push(addIntern());
-                        break;
-                    case "Exit": addMore = false;
-                        break;
+//             }.then(data => {
+//                 switch (data) {
+//                     case "Engineer": myTeam.push(addEngineer());
+//                         break;
+//                     case "Intern": myTeam.push(addIntern());
+//                         break;
+//                     case "Exit": addMore = false;
+//                         break;
 
-                }
-            })
-        ])
+//                 }
+//             })
+//         ])
 
-    } while(addMore === true)
+//     } 
 
-    //when done generate html
+//     //when done generate html
+// console.log("Bostomatwe");
+
+// }
 
 
-}
-
-
-init()
+// init()

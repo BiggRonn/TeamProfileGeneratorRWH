@@ -1,8 +1,9 @@
-
+const inquirer = require("inquirer");
 
 //will prompt user for data and return a manager object initialized with the given values
-function addManager(){
-    inquirer.prompt([
+async function addManager(){
+    let manager;
+    await inquirer.prompt([
         {
             type: "input",
             name: "mName",
@@ -25,13 +26,14 @@ function addManager(){
         }
         
     ]).then(answers => {
-        const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.oNum)
-        return manager;
+        manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.oNum)
     })
+    return manager;
 }
 
-function addEngineer(){
-    inquirer.prompt([
+async function addEngineer(){
+    let engineer;
+    await inquirer.prompt([
         {
             type: "input",
             name: "eName",
@@ -54,13 +56,14 @@ function addEngineer(){
         }
         
     ]).then(answers => {
-        const engineer = new Engineer(answers.mName, answers.mId, answers.mEmail, answers.github)
-        return engineer;
+        engineer = new Engineer(answers.mName, answers.mId, answers.mEmail, answers.github)
     })
+    return engineer;
 }
 
-function addIntern(){
-    inquirer.prompt([
+async function addIntern(){
+    let intern;
+    await inquirer.prompt([
         {
             type: "input",
             name: "iName",
@@ -83,9 +86,9 @@ function addIntern(){
         }
         
     ]).then(answers => {
-        const intern = new Intern(answers.mName, answers.mId, answers.mEmail, answers.school)
-        return intern;
+        intern = new Intern(answers.mName, answers.mId, answers.mEmail, answers.school)
     })
+    return intern;
 }
 
 module.exports = {
